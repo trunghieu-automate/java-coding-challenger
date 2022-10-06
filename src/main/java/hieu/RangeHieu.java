@@ -1,4 +1,6 @@
-public final class Range {
+package hieu;
+
+public final class RangeHieu {
     private final int upperbound;
     private final int lowerbound;
 
@@ -7,7 +9,7 @@ public final class Range {
     }
 
 
-    private Range(int lowerbound, int upperbound){
+    private RangeHieu(int lowerbound, int upperbound){
         if(lowerbound>upperbound){
             throw new IllegalArgumentException("Lowerbound should be less than upperbound");
         }
@@ -15,7 +17,7 @@ public final class Range {
         this.upperbound = upperbound;
     }
 
-    private Range(int lowerbound, int upperbound, String type){
+    private RangeHieu(int lowerbound, int upperbound, String type){
         if(lowerbound>upperbound){
             throw new IllegalArgumentException("Lowerbound should be less than upperbound");
         }
@@ -24,21 +26,21 @@ public final class Range {
         RangeType.type = type;
     }
 
-    public static Range of(int lowerbound, int upperbound){
-        return new Range(lowerbound, upperbound, "closed");
+    public static RangeHieu of(int lowerbound, int upperbound){
+        return new RangeHieu(lowerbound, upperbound, "closed");
     }
 
-    public static Range open(int lowerbound, int upperbound){
-        return new Range(lowerbound, upperbound, "open");
+    public static RangeHieu open(int lowerbound, int upperbound){
+        return new RangeHieu(lowerbound, upperbound, "open");
     }
-    public static Range closed(int lowerbound, int upperbound){
-        return new Range(lowerbound, upperbound, "closed");
+    public static RangeHieu closed(int lowerbound, int upperbound){
+        return new RangeHieu(lowerbound, upperbound, "closed");
     }
-    public static Range openClosed(int lowerbound, int upperbound){
-        return new Range(lowerbound, upperbound, "openClosed");
+    public static RangeHieu openClosed(int lowerbound, int upperbound){
+        return new RangeHieu(lowerbound, upperbound, "openClosed");
     }
-    public static Range closedOpen(int lowerbound, int upperbound){
-        return new Range(lowerbound, upperbound, "closedOpen");
+    public static RangeHieu closedOpen(int lowerbound, int upperbound){
+        return new RangeHieu(lowerbound, upperbound, "closedOpen");
     }
 
     public boolean contains(int number){
