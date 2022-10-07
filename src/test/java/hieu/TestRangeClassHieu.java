@@ -1,10 +1,18 @@
 package hieu;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestRangeClassHieu {
+    @BeforeEach
+    public void createRangeInstance(){
+    }
 
     @Test
     public void testCreateRangeClass(){
@@ -34,9 +42,9 @@ public class TestRangeClassHieu {
 
     @Test
     public void testNumberContainsInRange(){
-        RangeHieu sampleRangeHieu = RangeHieu.of(35, 44);
+        RangeHieu sampleRangeHieu = RangeHieu.of(35, 45);
         assertTrue(sampleRangeHieu.contains(35));
-        assertFalse(sampleRangeHieu.contains(45));
+        assertFalse(sampleRangeHieu.contains(46));
     }
 
     @Test
@@ -65,5 +73,20 @@ public class TestRangeClassHieu {
         RangeHieu openClosedRangeHieu = RangeHieu.openClosed(10, 100);
         assertFalse(openClosedRangeHieu.contains(10));
         assertTrue(openClosedRangeHieu.contains(100));
+    }
+
+    @Test
+    public void test_textInput_thenReturnContainResult(){
+        RangeHieu textRange = RangeHieu.of("a", "b");
+    }
+    @Test
+    public void test_decimalInput_thenReturnContainResult(){
+        RangeHieu decimalRange = RangeHieu.of(BigDecimal.valueOf(1.115), BigDecimal.valueOf(2.3368));
+
+    }
+    @Test
+    public void test_dayTimeInput_thenReturnContainResult(){
+        RangeHieu dayTimeRane = RangeHieu.of(LocalDate.of(2022, Month.SEPTEMBER,
+                01), LocalDate.of(2022, Month.SEPTEMBER, 30));
     }
 }
